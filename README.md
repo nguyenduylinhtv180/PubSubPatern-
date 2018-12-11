@@ -1,6 +1,6 @@
-#PUBLISH-SUBSCRIBE (PUB-SUB) DESIGN PATTERN
+# PUBLISH-SUBSCRIBE (PUB-SUB) DESIGN PATTERN
 
-##1) Publish-Subscribe (Pub-Sub) design pattern
+## 1) Publish-Subscribe (Pub-Sub) design pattern
 There are three components in Pub-Sub pattern: Publisher, Subscriber and PubSub Service.
     
     1. Message Publisher: sends messages to the PubSub Service without any knowledge of message subscribers.
@@ -8,7 +8,7 @@ There are three components in Pub-Sub pattern: Publisher, Subscriber and PubSub 
     3. Publishers tag each message with a topic, and send it to the PubSubService which acts like a middleman between Publishers and receivers.
     4. Subscriber registers itself with PubSubService (middleman) and tells that it’s interested in messages related to a particular topic.
     5. Publisher-Subscriber pattern is highly loosely coupled architecture where the publishers don’t know who the subscribers are and subscribers don’t know who the publishers of topic are.
-##2) Implementation details:
+## 2) Implementation details:
 Project Directory Structure:
 
     pubsuPatern
