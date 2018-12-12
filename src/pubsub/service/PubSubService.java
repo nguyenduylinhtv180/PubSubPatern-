@@ -25,7 +25,7 @@ public class PubSubService {
     public void addSubscriber(String topic, Subscriber subscriber){
 
         if(subscribersTopicMap.containsKey(topic)){
-            Set<Subscriber> subscribers = subscribersTopicMap.get(topic);
+            Set<Subscriber> subscribers = subscribersTopicMap.get(topic);//using set to prevent duplicates
             subscribers.add(subscriber);
             subscribersTopicMap.put(topic, subscribers);
         }else{
@@ -52,6 +52,7 @@ public class PubSubService {
         }else{
             while(!messagesQueue.isEmpty()){
                 Message message = messagesQueue.remove();
+
                 String topic = message.getTopic();
 
                 Set<Subscriber> subscribersOfTopic = subscribersTopicMap.get(topic);

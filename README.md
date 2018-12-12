@@ -35,37 +35,52 @@ Project Directory Structure:
 
 * Subscriber.java is an abstract class.
 
+    - addSubscriber() – Adds/Registers subscriber for a topic with PubSub service.
+    - unSubscribe() – Removes/Unsubscribes the subscriber for a topic with PubSub
+    - List<Message> subscriberMessages – List of message which stores the messages received by Subscriber.
+    - getMessagesForSubscriberOfTopic() – Method which requests for messages for subscriber of topic.
+
 * SubscriberImpl.java: class extends Subscriber and implements the abstract methods.
 
 * Message.java: class is a simple POJO class to represent the messages. It has topic attribute (for this subscriber is interested) and an attribute for message payload.
 
-* PubSubService .
+* PubSubService.java
+
+    - Map<String, Set<Subscriber>> subscribersTopicMap – Stores the subscribers interested in a topic.
+    - Queue<Message> messageQueue – Stores the messages published by publishers.
+    - addMessageToQueue() – Adds message published by publishers to message queue.
+    - addSubscriber () – Adds a subscriber for a topic.
+    - removeSubscriber() – removes a subscriber for a topic.
+    - broadcast() – Broadcast new messages added in queue to all subscribers of the topic. The messagesQueue will be empty after broadcasting is complete.
+    - getMessagesForSubscriberOfTopic() – Sends messages about a topic for subscriber at any point.
 
 ## 3) Output
 
-    Messages of linhnd4 Subscriber are: 
-    Message Topic -> linhnd4 : im linh1
-    Message Topic -> linhnd4 : i'm tiger
-    Message Topic -> linhnd4 : i like it
+    Messages of dogSubscriber are: 
+    Message Topic -> dog : gau gau 
+    Message Topic -> dog : ang ang
+    Message Topic -> dog : gau gau ang ang
     
-    Messages of life Subscriber are: 
-    Message Topic -> life : hard and Powerful programming language
-    Message Topic -> life : Advanced  message
+    Messages of catSubscriber are: 
+    Message Topic -> cat : meo meo
+    Message Topic -> cat : ngao  ngao
     
     Messages of All message Subscriber are: 
-    Message Topic -> linhnd4 : im linh1
-    Message Topic -> linhnd4 : i'm tiger
-    Message Topic -> linhnd4 : i like it
-    Message Topic -> life : hard and Powerful programming language
-    Message Topic -> life : Advanced  message
+    Message Topic -> dog : gau gau 
+    Message Topic -> dog : ang ang
+    Message Topic -> dog : gau gau ang ang
+    Message Topic -> cat : meo meo
+    Message Topic -> cat : ngao  ngao
     
     Publishing 2 more Messages...
     
-    Messages of linhnd4 Subscriber now are: 
-    Message Topic -> linhnd4 : im linh1
-    Message Topic -> linhnd4 : i'm tiger
-    Message Topic -> linhnd4 : i like it
-    Message Topic -> linhnd4 : JSP and Servlets
-    Message Topic -> linhnd4 : Struts framework
+    Messages of dog Subscriber now are: 
+    Message Topic -> dog : gau gau 
+    Message Topic -> dog : ang ang
+    Message Topic -> dog : gau gau ang ang
+    Message Topic -> dog : i'm dog , so: gau gau
+    Message Topic -> dog : i hate cat
+    
+    Process finished with exit code 0
 
 
